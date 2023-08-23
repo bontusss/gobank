@@ -10,16 +10,11 @@ on:
     branches: [ main ]
 
 jobs:
-
   test: 
     runs-on: ubuntu-latest
-    # Service containers to run with `container-job`
     services:
-      # Label used to access the service container
       postgres:
-        # Docker Hub image
-        image: postgres:12
-        # Provide the password for postgres
+        image: postgres:12-alpine
         env:
           POSTGRES_USER: root
           POSTGRES_PASSWORD: secret
