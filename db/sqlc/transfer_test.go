@@ -4,12 +4,13 @@ import (
 	"context"
 	"testing"
 
+
 	"github.com/bontusss/gobank/utils"
 	"github.com/stretchr/testify/require"
 )
 
 func createRandomTransfer(t *testing.T, from_account, to_account Account) Transfer {
-	args := CreateTransferParams {
+	args := CreatetransferParams {
 		FromAccountID: from_account.ID,
 		ToAccountID: to_account.ID,
 		Amount: utils.RandomBalance(),

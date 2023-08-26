@@ -19,13 +19,13 @@ INSERT INTO transfers (
 ) RETURNING id, from_account_id, to_account_id, amount, created_at
 `
 
-type CreateTransferParams struct {
+type CreatetransferParams struct {
 	FromAccountID int64 `json:"from_account_id"`
 	ToAccountID   int64 `json:"to_account_id"`
 	Amount        int64 `json:"amount"`
 }
 
-func (q *Queries) Createtransfer(ctx context.Context, arg CreateTransferParams) (Transfer, error) {
+func (q *Queries) Createtransfer(ctx context.Context, arg CreatetransferParams) (Transfer, error) {
 	row := q.db.QueryRowContext(ctx, createtransfer, arg.FromAccountID, arg.ToAccountID, arg.Amount)
 	var i Transfer
 	err := row.Scan(
@@ -84,7 +84,7 @@ func (q *Queries) ListTransfers(ctx context.Context, arg ListTransfersParams) ([
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Transfer
+	items := []Transfer{}
 	for rows.Next() {
 		var i Transfer
 		if err := rows.Scan(
